@@ -1,5 +1,6 @@
 '''
-Aufgabe: Vereinfache folgende Funktion >>>
+Aufgabe:
+Vereinfache folgende Funktion >>>
 def do_something (x, y) :
 if x> 0 and x < 100 and y > 10 and y < 20:
 print ("VALID RANGE" )
@@ -10,8 +11,8 @@ def do_something(x, y):
     if 0 < x < 100 and 10 < y < 20:
         # Wenn die Bedingung erfüllt ist, geben wir "GÜLTIGER BEREICH" aus
         return "VALID RANGE"
-    else:
-        return "NO VALID RANGE"
+    return "NO VALID RANGE"
+
 # In der vereinfachten Version der Funktion wurden die einzelnen Bedingungen zu einer einzigen Bedingung kombiniert.
 # Statt mehrere Vergleichsoperatoren zu verwenden, wurde die Bedingung mit dem Bereichsoperator x < y < z zusammenfassen.
 
