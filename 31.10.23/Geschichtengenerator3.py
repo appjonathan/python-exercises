@@ -1,45 +1,55 @@
 import random
 
+# Definition der Funktion generiere_zufaellige_geschichte
 def generiere_zufaellige_geschichte():
-    einleitungen = ["In einer fernen Galaxie", "Es war einmal in einem kleinen Dorf", "Auf einem abgelegenen Berggipfel"]
-    subjekte = ["Ein grüner Dinosaurier", "Ein frecher Pinguin", "Ein furchtloser Astronaut"]
-    verben = ["tanzt", "fliegt", "lacht über"]
-    objekte = ["eine Banane", "einen Regenbogen", "eine Tasse Kaffee"]
-    orte = ["auf dem Mond", "im Dschungel", "in der Wüste"]
-    handlungen = ["entdeckte", "rettete", "erfand"]
-    hohepunkte = ["einen außerirdischen Freund", "einen Schatz", "eine geheime Tür"]
+    # Liste von möglichen Einleitungen
+    einleitungen = ["In einer fernen Galaxie", "In in einem kleinen abgelegenen Dorf", "Auf einem abgelegenen Berggipfel"]
+    # Liste von möglichen Subjekten
+    subjekte = ["Ein kleiner Junge", "Ein freches Mädchen", "Ein furchtloser Schwertkämpfer"]
+    # Liste von möglichen Verben (Teil 1)
+    verben1 = ["lebte", "wachte", "ruhte"]
+    # Liste von möglichen Verben (Teil 2)
+    verben = ["kämpfte", "fliegt", "lacht über"]
+    # Liste von möglichen Bindewörtern
+    bindewort = ["und", "aber"]
+    # Liste von möglichen Objekten
+    objekte = ["ein Breitschwert", "einen Drachen", "eine Hellebarde"]
+    # Liste von möglichen Orten
+    orte = ["auf dem Schlachtfeld", "im Dschungel", "in der Wüste"]
+    # Liste von möglichen Handlungen
+    handlungen = ["entdeckte", "rettete", "erschlug"]
+    # Liste von möglichen Höhepunkten
+    hohepunkte = ["einen großen Magier", "einen Schatz", "eine geheime Tür"]
+    # Liste von möglichen Enden
     ende = ["und lebte glücklich bis ans Ende seiner Tage.", "und wurde berühmt.", "und fand sein wahres Glück."]
     
-    einleitung = random.choice(einleitungen)
-    hauptfigur = random.choice(subjekte)
-    handlung = random.choice(handlungen)
-    hohepunkt = random.choice(hohepunkte)
-    abschluss = random.choice(ende)
-    
+    # Eingabe der Anzahl der Sätze in der Geschichte durch den Benutzer
     anzahl_saetze = int(input("Geben Sie die Anzahl der Sätze in der Geschichte ein: "))
-    
     geschichten = []
-    geschichten.append(f"{einleitung} {hauptfigur} {handlung} {random.choice(objekte)} {random.choice(orte)}")
     
-    for _ in range(anzahl_saetze-2):
-        satz = f"{hauptfigur} {random.choice(verben)} {random.choice(objekte)} {random.choice(orte)}"
+    # Schleife, um die angegebene Anzahl von Sätzen zu generieren
+    for _ in range(anzahl_saetze):
+        # Erzeugen eines zufälligen Satzes durch Auswahl einer zufälligen Einleitung, eines zufälligen Subjekts, eines zufälligen Bindeworts, eines zufälligen Verbs, eines zufälligen Objekts, eines zufälligen Orts, einer zufälligen Handlung, eines zufälligen Höhepunkts und eines zufälligen Endes
+        satz = f"{random.choice(einleitungen)} {random.choice(verben1)} {random.choice(subjekte)} {random.choice(bindewort)} {random.choice(verben)} {random.choice(objekte)} {random.choice(orte)} {random.choice(handlungen)} {random.choice(hohepunkte)} {random.choice(ende)}"
         geschichten.append(satz)
-    
-    geschichten.append(f"{hauptfigur} {hohepunkt} {random.choice(orte)}")
-    geschichten.append(f"{hauptfigur} {random.choice(verben)} {random.choice(objekte)} {abschluss}")
-    
-    with open("generierte_geschichten.txt", "w", encoding="utf-8") as datei:
+
+    # Öffnen der Datei "Generierte_Geschichten.txt" im Anhänge-Modus und Schreiben der generierten Geschichten in die Datei
+    with open("Generierte_Geschichten.txt", "a", encoding="utf-8") as datei:
         for geschichte in geschichten:
             datei.write(geschichte + "\n")
     
-    print("Die Geschichten wurden in die Datei 'generierte_geschichten.txt' gespeichert.")
+    print("Die Geschichten wurden in die Datei 'Generierte_Geschichten.txt' gespeichert.")
     
+    # Abfrage, ob der Benutzer weitere Geschichten generieren möchte
     weiter_generieren = input("Weitere Geschichte generieren? (ja/nein): ")
     if weiter_generieren.lower() == "ja":
+        # Wenn ja, rufe die Funktion generiere_zufaellige_geschichte erneut auf
         generiere_zufaellige_geschichte()
     else:
+        # Ansonsten, beende das Programm
         print("Vielen Dank für die Verwendung des Zufallsgeschichten-Generators!")
     
+# Hauptprogramm
 print("Willkommen zum Zufallsgeschichten-Generator!")
 generiere_zufaellige_geschichte()
 print("Auf Wiedersehen!")

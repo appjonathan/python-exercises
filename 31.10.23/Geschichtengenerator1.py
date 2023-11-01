@@ -1,32 +1,36 @@
 import random
 
-# Liste von Wörtern und Phrasen
-subjekte = ["Ein grüner Dinosaurier", "Ein frecher Pinguin", "Ein furchtloser Astronaut"]
-verben = ["tanzt", "fliegt", "lacht über"]
-objekte = ["eine Banane", "einen Regenbogen", "eine Tasse Kaffee"]
-orte = ["auf dem Mond", "im Dschungel", "in der Wüste"]
-
-# Begrüßung
-print("Willkommen zum Zufallsgeschichten-Generator!")
-
-while True:
-    # Anzahl der Sätze in der Geschichte vom Benutzer eingeben lassen
-    anzahl_sätze = int(input("Geben Sie die Anzahl der Sätze in der Geschichte ein: "))
+# Funktion generiere_zufaellige_geschichte
+def generiere_zufaellige_geschichte():
+    # Liste von möglichen Subjekten
+    subjekte = ["Ein grüner Dinosaurier", "Ein frecher Pinguin", "Ein furchtloser Astronaut"]
+    # Liste von möglichen Verben
+    verben = ["tanzt", "fliegt", "lacht über"]
+    # Liste von möglichen Objekten
+    objekte = ["eine Banane", "einen Regenbogen", "eine Tasse Kaffee"]
+    # Liste von möglichen Orten
+    orte = ["auf dem Mond", "im Dschungel", "in der Wüste"]
     
-    # Generiere zufällige Geschichten
-    print("Hier ist deine zufällige Geschichte:")
-    for _ in range(anzahl_sätze):
-        subjekt = random.choice(subjekte)
-        verb = random.choice(verben)
-        objekt = random.choice(objekte)
-        ort = random.choice(orte)
-        satz = f"{subjekt} {verb} {objekt} {ort}."
+    # Eingabe der Anzahl der Sätze in der Geschichte durch den Benutzer
+    anzahl_saetze = int(input("Geben Sie die Anzahl der Sätze in der Geschichte ein: "))
+    
+    print("Generierte Geschichte:")
+    # Schleife, um die angegebene Anzahl von Sätzen zu generieren
+    for _ in range(anzahl_saetze):
+        # Erzeugen eines zufälligen Satzes durch Auswahl eines zufälligen Subjekts, Verbs, Objekts und Orts
+        satz = f"{random.choice(subjekte)} {random.choice(verben)} {random.choice(objekte)} {random.choice(orte)}"
         print(satz)
     
-    # Frage ob weitere Geschichten generiert werden sollen
-    weiter = input("Möchtest du weitere Geschichten generieren lassen? (ja/nein): ")
-    if weiter.lower() != "ja":
-        break
-
-# Grußformel am Ende
-print("Vielen Dank für die Verwendung des Zufallsgeschichten-Generators! Auf Wiedersehen!")
+    # Abfrage, ob der Benutzer weitere Geschichten generieren möchte
+    weiter_generieren = input("Weitere Geschichte generieren? (ja/nein): ")
+    if weiter_generieren.lower() == "ja":
+        # Wenn ja, rufe die Funktion generiere_zufaellige_geschichte erneut auf
+        generiere_zufaellige_geschichte()
+    else:
+        # Ansonsten, beende das Programm
+        print("Vielen Dank für die Verwendung des Zufallsgeschichten-Generators!")
+    
+# Hauptprogramm
+print("Willkommen zum Zufallsgeschichten-Generator!")
+generiere_zufaellige_geschichte()
+print("Auf Wiedersehen!")
